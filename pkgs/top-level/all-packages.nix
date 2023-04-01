@@ -1683,6 +1683,8 @@ with pkgs;
 
   xtrt = callPackage ../tools/archivers/xtrt { };
 
+  xymon-client = callPackage ../tools/misc/xymon-client { };
+
   yabridge = callPackage ../tools/audio/yabridge {
     wine = wineWowPackages.staging;
   };
@@ -25956,6 +25958,8 @@ with pkgs;
   xorg-autoconf = callPackage ../development/tools/misc/xorg-autoconf { };
 
   xwayland = callPackage ../servers/x11/xorg/xwayland.nix { };
+
+  xymon = callPackage ../servers/monitoring/xymon { };
 
   yaws = callPackage ../servers/http/yaws { };
 
