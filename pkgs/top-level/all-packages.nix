@@ -25895,6 +25895,8 @@ with pkgs;
 
   wallabag = callPackage ../servers/web-apps/wallabag { };
 
+  warpgate = callPackage ../servers/warpgate { };
+
   webdav = callPackage ../servers/webdav { };
 
   webdav-server-rs = callPackage ../servers/webdav-server-rs { };

@@ -1,0 +1,7 @@
+{
+  "name": "warpgate-api-client-generic",
+  "version": "0.0.0",
+  "devDependencies": {
+    "typescript": "3.5.3"
+  }
+}
