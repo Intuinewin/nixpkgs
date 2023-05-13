@@ -6,28 +6,22 @@
 
 buildGoModule rec {
   pname = "opentelemetry-collector-contrib";
-  version = "0.66.0";
+  version = "0.77.0";
 
   src = fetchFromGitHub {
     owner = "open-telemetry";
     repo = "opentelemetry-collector-contrib";
     rev = "v${version}";
-    sha256 = "sha256-FT5AoqCHNf2sdKyejALOsL/zHrrxP7vdntagR9vA00I=";
+    hash = "sha256-9OFNJgzMiTNRXuK4joPxnVfCI5mVGqgfKBGI1xpnhCY=";
   };
-  # proxy vendor to avoid hash missmatches between linux and macOS
-  proxyVendor = true;
-  vendorSha256 = "sha256-65bfTCMRJ8iL5ABGPqvkayw4zSn4KkCriEkWYa0Pe68=";
 
-  subPackages = [ "cmd/otelcontribcol" ];
-
-  # CGO_ENABLED=0 required for mac - "error: 'TARGET_OS_MAC' is not defined, evaluates to 0"
-  # https://github.com/shirou/gopsutil/issues/976
-  CGO_ENABLED = if stdenv.isLinux then 1 else 0;
+  sourceRoot = "source/cmd/otelcontribcol";
+  vendorHash = "sha256-fOxhSuHTtFniSxPoqXxHiAPZUZX6sJo3q5G6Y0xEkJ4=";
 
   ldflags = [
     "-s"
     "-w"
-    "-X github.com/open-telemetry/opentelemetry-collector-contrib/internal/version.Version=v${version}"
+    "-X github.com/open-telemetry/opentelemetry-collector-contrib/internal/otelcontribcore/internal/version.Version=v${version}"
   ];
 
   meta = with lib; {
@@ -45,7 +39,7 @@ buildGoModule rec {
     homepage = "https://github.com/open-telemetry/opentelemetry-collector-contrib";
     changelog = "https://github.com/open-telemetry/opentelemetry-collector-contrib/blob/v${version}/CHANGELOG.md";
     license = licenses.asl20;
-    maintainers = with maintainers; [ uri-canva jk ];
+    maintainers = with maintainers; [ uri-canva jk Intuinewin ];
     mainProgram = "otelcontribcol";
   };
 }
