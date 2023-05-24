@@ -2710,6 +2710,8 @@ with pkgs;
     gtk = gtk3;
   };
 
+  tabby = callPackage ../applications/terminal-emulators/tabby { };
+
   terminator = callPackage ../applications/terminal-emulators/terminator { };
 
   termite = callPackage ../applications/terminal-emulators/termite/wrapper.nix {
